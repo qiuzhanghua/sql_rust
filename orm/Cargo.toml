@@ -5,21 +5,27 @@ authors = ["qiuzhanghua <qiuzhanghua@icloud.com>"]
 edition = "2018"
 
 [dependencies]
-rustorm = "0.16"
-rustorm_dao = "0.5"
-rustorm_codegen = "0.5"
-#postgres-shared = {version = "0.4", optional = true}
+chrono ="0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+json = "0.12"
+lazy_static = "1.4"
+rustorm = "0.15.4"
+rustorm_dao = "0.4.3"
+rustorm_codegen = "0.3.1"
+postgres-shared = {version = "0.4", optional = true}
 cfg-if = "0.1"
+dotenv = "0.15"
 mysql = {version = "17"}
-r2d2_mysql = {version = "17"}
-#postgres = {version = "0.17.1", optional = true}
-#rusqlite = {version = "0.21", optional = true}
-#r2d2_sqlite = {version = "0.14", optional = true}
-#r2d2_postgres = {version = "0.16", optional = true}
+r2d2_mysql = {version = "17", optional = true}
+postgres = {version = "0.17.1", optional = true}
+rusqlite = {version = "0.21", optional = true}
+r2d2_sqlite = {version = "0.14", optional = true}
+r2d2_postgres = {version = "0.16", optional = true}
+thiserror ="1"
 
-
-#[features]
-## default = ["with-postgres"]
-#with-postgres = ["postgres", "r2d2_postgres", "postgres-shared"]
-## with-sqlite = ["rusqlite","r2d2_sqlite"]
-#with-mysql = ["r2d2_mysql"]
+[features]
+# default = ["with-postgres"]
+with-postgres = ["postgres", "r2d2_postgres", "postgres-shared"]
+# with-sqlite = ["rusqlite","r2d2_sqlite"]
+with-mysql = ["r2d2_mysql"]
