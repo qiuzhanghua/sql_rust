@@ -12,8 +12,19 @@ async fn main() -> anyhow::Result<()> {
         .fetch_all(&mut pool).await.unwrap();
     for rec in recs {
         println!("{:?}", rec);
-    }
+    };
+
+    let person = sqlx::query_as!(Person, r#"SELECT * from people"#)
+        .fetch_one(&mut pool).await?;
+    println!("{:?}", person);
     Ok(())
 }
 
+#[derive(Debug)]
+pub struct Person {
+    pub id: u64,
+    pub name: String,
+    pub email: String,
+    pub enabled: i8,
+}
 
