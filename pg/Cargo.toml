@@ -1,0 +1,10 @@
+[package]
+name = "pg"
+version = "0.1.0"
+authors = ["qiuzhanghua <qiuzhanghua@icloud.com>"]
+edition = "2018"
+
+[dependencies]
+postgres = "0.17"
+r2d2_postgres = "0.16"
+r2d2="0.8"

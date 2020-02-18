@@ -1,0 +1,6 @@
+[workspace]
+members = [
+"my",
+"pg",
+"orm",
+]

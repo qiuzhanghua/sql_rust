@@ -1,0 +1,25 @@
+[package]
+name = "orm"
+version = "0.1.0"
+authors = ["qiuzhanghua <qiuzhanghua@icloud.com>"]
+edition = "2018"
+
+[dependencies]
+rustorm = "0.16"
+rustorm_dao = "0.5"
+rustorm_codegen = "0.5"
+#postgres-shared = {version = "0.4", optional = true}
+cfg-if = "0.1"
+mysql = {version = "17"}
+r2d2_mysql = {version = "17"}
+#postgres = {version = "0.17.1", optional = true}
+#rusqlite = {version = "0.21", optional = true}
+#r2d2_sqlite = {version = "0.14", optional = true}
+#r2d2_postgres = {version = "0.16", optional = true}
+
+
+#[features]
+## default = ["with-postgres"]
+#with-postgres = ["postgres", "r2d2_postgres", "postgres-shared"]
+## with-sqlite = ["rusqlite","r2d2_sqlite"]
+#with-mysql = ["r2d2_mysql"]
