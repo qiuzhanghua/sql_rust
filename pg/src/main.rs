@@ -1,8 +1,8 @@
-use std::error::Error;
-use postgres::{NoTls, Client};
+use postgres::{NoTls};
 use r2d2_postgres::PostgresConnectionManager;
+use std::error::Error;
 
-fn main() -> Result<(), Box<dyn Error>>{
+fn main() -> Result<(), Box<dyn Error>> {
     let manager = PostgresConnectionManager::new(
         "host=localhost user=app password=app123".parse().unwrap(),
         NoTls,
@@ -11,15 +11,15 @@ fn main() -> Result<(), Box<dyn Error>>{
 
     let mut client = pool.get().unwrap();
 
-//    let mut client = Client::connect("host=localhost user=app password=app123", NoTls)?;
+    //    let mut client = Client::connect("host=localhost user=app password=app123", NoTls)?;
 
-//    client.batch_execute("
-//    CREATE TABLE person (
-//        id      SERIAL PRIMARY KEY,
-//        name    TEXT NOT NULL,
-//        data    BYTEA
-//    )
-//")?;
+    //    client.batch_execute("
+    //    CREATE TABLE person (
+    //        id      SERIAL PRIMARY KEY,
+    //        name    TEXT NOT NULL,
+    //        data    BYTEA
+    //    )
+    //")?;
 
     let name = "Ferris";
     let data = None::<&[u8]>;
