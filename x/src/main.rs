@@ -1,5 +1,4 @@
-use sqlx;
-use sqlx::{MySqlPool, Pool};
+use sqlx::{self, MySqlPool, Pool};
 
 #[async_std::main]
 async fn main() -> anyhow::Result<()> {
