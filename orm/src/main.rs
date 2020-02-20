@@ -9,6 +9,9 @@ use rustorm::{
     Value,
 };
 
+// Don't work, ConnectError(UnsupportedDb("sqlite"))
+// I have not found why.
+
 fn main() {
     mod for_insert {
         use super::*;
