@@ -29,3 +29,17 @@ pub struct Person {
     pub email: String,
     pub enabled: i8,
 }
+
+//
+//
+// create table people
+// (
+// 	id bigint unsigned auto_increment,
+// 	name varchar(80) not null,
+// 	email varchar(128) not null,
+// 	enabled boolean default false null,
+// 	constraint people_pk
+// 		primary key (id)
+// );
+//
+//

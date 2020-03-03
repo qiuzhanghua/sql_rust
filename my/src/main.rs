@@ -113,7 +113,7 @@ fn main() {
 
     // Now make sure that `payments` equals to `selected_payments`.
     // Mysql gives no guaranties on order of returned rows without `ORDER BY`
-    // so assume we are lukky.
+    // so assume we are lucky.
     assert_eq!(payments, selected_payments);
     println!("Yay!");
 }
