@@ -1,18 +1,17 @@
 // use sqlx::types::time::PrimitiveDateTime;
+use sqlx::types::chrono;
 use sqlx::{self, MySqlPool, PgPool, Pool};
 use std::env;
-use sqlx::types::chrono;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     dotenv::dotenv().ok();
     let db_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-//   let pool: PgPool = Pool::new(&db_url).await?;
+    //   let pool: PgPool = Pool::new(&db_url).await?;
     let pool: MySqlPool = Pool::new(&db_url).await?;
     let recs = sqlx::query!(r#"SELECT * from people"#)
         .fetch_all(&mut &pool)
-        .await
-        .unwrap();
+        .await?;
     for rec in recs {
         println!("{:?}", rec);
     }
@@ -32,10 +31,9 @@ pub struct Person {
     pub person_email: String,
     pub created: chrono::NaiveDateTime,
     pub updated: chrono::NaiveDateTime,
-    pub person_enabled: i8,         //bool for PG
+    pub person_enabled: i8, //bool for PG
     pub dept_id: Option<String>,
 }
-
 
 // DATABASE_URL="postgres://app:app@localhost:5432/app" cargo run
 // DATABASE_URL="mysql://app:app@localhost:3306/app" cargo run
