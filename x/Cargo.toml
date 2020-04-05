@@ -1,17 +1,20 @@
 [package]
 name = "x"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["qiuzhanghua <qiuzhanghua@icloud.com>"]
 edition = "2018"
 
 [dependencies]
-#sqlx = "0.2"
 dotenv = "0.15"
-sqlx = { version = "0.2.0", features = [ "postgres", "mysql"]}
-sqlx-core = "0.2"
-sqlx-macros = "0.2"
-mysql = "17"
+async-native-tls = { version = "0.3", default-features = false, features = [ "runtime-tokio" ] }
+mysql = "18"
 postgres = "0.17"
 futures = "0.3"
-async-std = { version = "1.5.0", features = [ "attributes" ] }
 anyhow = "1"
+tokio = {version = "0.2.16", features = ["full"] }
+time = "0.2.9"
+
+[dependencies.sqlx]
+version = "0.3"
+default-features = false
+features = [ "runtime-tokio", "macros", "postgres", "mysql", "sqlite",  "uuid", "chrono", "time", "bigdecimal", "json", "ipnetwork", "tls"]

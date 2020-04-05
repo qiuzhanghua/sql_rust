@@ -19,7 +19,7 @@ fn main() {
     // See docs on the `OptsBuilder`'s methods for the list of options available via URL.
     //    let pool = my::Pool::new("mysql://app:app123@localhost:3306/app").unwrap();
 
-    let db_url = "mysql://app:app123@localhost:3306/app";
+    let db_url = "mysql://app:app@localhost:3306/app";
     let opts = Opts::from_url(&db_url).unwrap();
     let builder = OptsBuilder::from_opts(opts);
     let manager = MysqlConnectionManager::new(builder);
@@ -67,10 +67,10 @@ fn main() {
     // Also we assume that no error happened in `prepare`.
     for mut stmt in pool
         .prepare(
-            r"INSERT INTO payment
+            r###"INSERT INTO payment
                                        (customer_id, amount, account_name)
                                    VALUES
-                                       (:customer_id, :amount, :account_name)",
+                                       (:customer_id, :amount, :account_name)"###,
         )
         .into_iter()
     {
@@ -113,7 +113,7 @@ fn main() {
 
     // Now make sure that `payments` equals to `selected_payments`.
     // Mysql gives no guaranties on order of returned rows without `ORDER BY`
-    // so assume we are lukky.
+    // so assume we are lucky.
     assert_eq!(payments, selected_payments);
     println!("Yay!");
 }
