@@ -1,12 +1,13 @@
-use sqlx::types::time::PrimitiveDateTime;
+// use sqlx::types::time::PrimitiveDateTime;
 use sqlx::{self, MySqlPool, PgPool, Pool};
 use std::env;
+use sqlx::types::chrono;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     dotenv::dotenv().ok();
     let db_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-//    let pool: PgPool = Pool::new(&db_url).await?;
+//   let pool: PgPool = Pool::new(&db_url).await?;
     let pool: MySqlPool = Pool::new(&db_url).await?;
     let recs = sqlx::query!(r#"SELECT * from people"#)
         .fetch_all(&mut &pool)
@@ -16,10 +17,10 @@ async fn main() -> anyhow::Result<()> {
         println!("{:?}", rec);
     }
 
-    // let person = sqlx::query_as!(Person, r#"SELECT * from people"#)
-    //     .fetch_one(&mut &pool)
-    //     .await?;
-    // println!("{:?}", person);
+    let person = sqlx::query_as!(Person, r#"SELECT * from people"#)
+        .fetch_one(&mut &pool)
+        .await?;
+    println!("{:?}", person);
     Ok(())
 }
 
@@ -29,8 +30,8 @@ pub struct Person {
     pub person_name: String,
     pub person_pass: String,
     pub person_email: String,
-    pub created: PrimitiveDateTime, // chrono::naive::datetime::NaiveDateTime for PG
-    pub updated: PrimitiveDateTime, // chrono::naive::datetime::NaiveDateTime for PG
+    pub created: chrono::NaiveDateTime,
+    pub updated: chrono::NaiveDateTime,
     pub person_enabled: i8,         //bool for PG
     pub dept_id: Option<String>,
 }

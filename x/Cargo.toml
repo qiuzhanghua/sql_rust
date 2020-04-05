@@ -17,4 +17,4 @@ time = "0.2.9"
 [dependencies.sqlx]
 version = "0.3"
 default-features = false
-features = [ "runtime-tokio", "macros", "postgres", "mysql", "sqlite",  "uuid", "chrono", "time", "bigdecimal", "json", "ipnetwork", "tls"]
+features = [ "runtime-tokio", "macros", "postgres", "mysql", "sqlite",  "uuid", "chrono", "bigdecimal", "json", "ipnetwork", "tls"]
