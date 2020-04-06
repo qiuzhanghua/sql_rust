@@ -13,6 +13,7 @@ futures = "0.3"
 anyhow = "1"
 tokio = {version = "0.2.16", features = ["full"] }
 time = "0.2.9"
+sqlx-core = {version = "0.3.3", default-features=false, features = [ "runtime-tokio" ]}
 
 [dependencies.sqlx]
 version = "0.3"
